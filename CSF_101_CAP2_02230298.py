@@ -1,3 +1,9 @@
+# Refrence
+
+# https://docs.python.org/3/tutorial/classes.html
+# https://realpython.com/python3-object-oriented-programming/
+
+
 # Step 1: Create the Book class
 class Book:
     def __init__(self, title, author):
