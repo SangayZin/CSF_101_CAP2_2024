@@ -33,7 +33,8 @@ class Library:
     def add_book(self, book, show_message=True):
         self.books.append(book)
         if show_message:
-            print(f"Book '{book.title}' added to the library.")
+            print(f"Book '{book.title}' by {book.author} added to the library.")
+            
 
     def view_all_books(self):
         # Display all the books in the library
@@ -50,9 +51,8 @@ class Library:
             if book.title == book_title and book.is_available:
                 book.is_available = False # Mark the book as borrowed
                 self.borrowed_books[book_title] = user # Track which user borrowed the book
-                print(f"Book '{book_title}' borrowed by {user}.")
-                return
-        print(f"Book '{book_title}' is not available or already borrowed.")
+                return(f"Book '{book_title}' borrowed by {user}.")
+        return(f"Book '{book_title}' is not available or already borrowed.")
 
     def return_book(self, book_title, user):
         # Allow a user to return a borrowed book
@@ -61,9 +61,8 @@ class Library:
                 if book.title == book_title:
                     book.is_available = True # Maek the book as available again
                     del self.borrowed_books[book_title]
-                    print(f"Book '{book_title}' returned by {user}.")
-                    return
-        print(f"Book '{book_title}' is not borrowed by {user}.") # Inform if the book wasn't borrowed by the user.
+                    return(f"Book '{book_title}' returned by {user}.")
+        return(f"Book '{book_title}' is not borrowed by {user}.") # Inform if the book wasn't borrowed by the user.
 
 
 # Step 3: Create the User class
@@ -87,6 +86,7 @@ class Admin(User):
     def add_book(self, library, title, author):
         new_book = Book(title, author)  # Create a new book
         library.add_book(new_book)  # Add the book to the library
+
 
     def track_borrowed_books(self, library):
         if library.borrowed_books:
